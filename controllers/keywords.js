@@ -1,4 +1,4 @@
-import { serverData } from '../middlewares/serviceData';
+const serviceData = require('../middlewares/serviceData');
 module.exports = {
   postKeywords: async (req, res) => {
     try {
@@ -17,7 +17,7 @@ module.exports = {
     try {
       const keywords = req.body.keywords;
 
-      const filteredCandidates = serverData(keywords);
+      const filteredCandidates = serviceData.serverData(keywords);
 
       res.status(200).json({ filteredCandidates });
     } catch (err) {
