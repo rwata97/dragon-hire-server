@@ -1,28 +1,28 @@
-const serviceData = require('../middlewares/serviceData');
+const serviceData = require("../middlewares/serviceData");
 module.exports = {
   postKeywords: async (req, res) => {
     try {
       const payload = req.body;
 
-      const keywords = ['javascript', 'nodejs', 'express', 'java', 'sql'];
+      const keywords = ["javascript", "nodejs", "express", "java", "sql"];
 
       res.status(200).json({ keywords });
     } catch (err) {
       console.error(err);
-      res.status(500).json({ message: 'Server error' });
+      res.status(500).json({ message: "Server error" });
     }
   },
 
   postCandidates: async (req, res) => {
     try {
-      const keywords = req.body.keywords;
+      const candidates = req.body.candidates;
 
-      const filteredCandidates = serviceData.serverData(keywords);
+      const filteredCandidates = serviceData.serverData(candidates);
 
       res.status(200).json({ filteredCandidates });
     } catch (err) {
       console.error(err);
-      res.status(500).json({ message: 'Server error' });
+      res.status(500).json({ message: "Server error" });
     }
   },
 };
